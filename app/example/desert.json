@@ -2,7 +2,7 @@
  "layers":[
         {
          "compression":"zlib",
-         "data":"eJztmG9PwjAQh6u8ECUBkQQU4pgO+acC3\/\/TccY2Wy5Heyu3o5C9eLKVdtnD7wo7yIwxmWVOHOeeccaY7wMD4LnyWizYjzrfW\/ActX5H+FHXSPr5fKixdH5U\/U7Nc9aPgQnwKuDXBHfAPdAJ1EGCN2BagxnwCDwBPYH7LwPzH8BnDQpBvyXyW3v8FsAW+FL0q5NfwcxT2i\/knIrf4USWzufH\/O\/\/X2U\/vOfwOJQX3pcSftTnYI3yc+chP5yrVH4rNHY+dfNrur7YE7Ox9ePyLeD3YOma8lnko8Nc53g\/029gyv7CvVcfPeY66roYv4kp+4sh8BJgxFxHXdfk3tMmN3Sfk5JnrugT05tpeO3skfPdWX3+FEL358Lx+3M62LWafvsE\/fC+Ts0vpr7V\/kLLz\/2Wj+ktUsuPqnXKfpr5xfRmmn63Qp6Aw7WAs2rqf6O2xi0tl+EICkK4NQ==",
+         "data":"eJztmGtPwyAUhtF98LLEeUmcl9hVq928bf3\/v85jhLQ5eYEDOzQ12YcnawuUZy\/QslXGmMqyAp+rwHklKL8gFsTl4Fou3A8d7yy8DNXfAj\/URtMv5IPOtfND4+crl9S\/JZbEnYJfCY6IY2IWGQcN7omHBB6JM+KcmCv030bKn4mXBBpFv5b5bQJ+r8QH8TaiX0p+jTBPbb+Y81T8Ok+WzufL\/M3\/75H9+Jzj57G8+LzU8EPrYMPyc8cxP56rVn5rdu58UvMrPb7ck\/Nux0\/Kp4LfieXU9O+iEDNhPcfTnn4L0+8v3HcNMRfWQ+1y\/Jam319cEdcRboT1ULuSc29saoP3OVPyrEf0ydmbSe7r2zOg5zdiaz8lz87h+6cJ3JP3i\/pvGbF7Sfx+nTpbN9VPkqOPXQE\/7hTKELXn87qEX8iHH2uM73B\/IfVD8wxl63N0v+Vz9hapa3Yfcvy6Ah6afpL1gcjJOWdvlro+xpgHKaA1UtqvzvCben7S8lRfnlXq\/0boGee7ppmldIxL9H3gwH\/iBzVDuj0=",
          "encoding":"base64",
          "height":40,
          "name":"Ground",
@@ -20,7 +20,7 @@
  "tilesets":[
         {
          "firstgid":1,
-         "source":"..\/..\/..\/..\/Downloads\/tiled-2016.05.25-linux64\/examples\/desert.tsx"
+         "source":"desert.tsx"
         }],
  "tilewidth":32,
  "version":1,
