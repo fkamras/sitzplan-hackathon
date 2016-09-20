@@ -1,3 +1,5 @@
+require('./styles/main.scss');
+
 require('file?name=[name].[ext]!./index.html');
 import tiled from './lib/tiled.js';
 import pixi from 'pixi.js';
@@ -12,8 +14,7 @@ const tilesets = {
 };
 
 const container = document.getElementsByClassName('container')[0];
-
-const renderer = pixi.autoDetectRenderer(2000, 2000);
+const renderer = pixi.autoDetectRenderer(container.offsetWidth, container.offsetHeight);
 
 const stage = new pixi.Container();
 
@@ -36,7 +37,7 @@ const fillBackground = (tilemap, tileset, tileimage, container) => {
     if (textureCache[tileNumber]) {
       return textureCache[tileNumber];
     }
-    
+
     const xPos = tileNumber % imagesPerRow;
     const yPos = (tileNumber - xPos) / imagesPerRow;
 
@@ -62,6 +63,7 @@ const fillBackground = (tilemap, tileset, tileimage, container) => {
         sprite.y = y * tilemap.tileheight;
 
         container.addChild(sprite);
+
       });
     });
   };
@@ -75,9 +77,11 @@ const setup = () => {
   stage.addChild(background);
 
   container.appendChild(renderer.view);
+
   renderer.render(stage);
 };
 
 pixi.loader
   .add(image)
   .load(setup);
+
