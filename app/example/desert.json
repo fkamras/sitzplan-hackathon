@@ -2,7 +2,7 @@
  "layers":[
         {
          "compression":"zlib",
-         "data":"eJztmNkKwjAQRaN9cAPrAq5Yq3Xf6v9\/nSM2VIbQJjEZR+nDwQZScrwztoORECLySBcIgZ7nc2y4KfyWDLx+Jb9nViNgDEwY+KioAXUgQN4+zpoCMwPmQAtoAx2CLFbA2oDEo9+hwG8DnIDtF\/2K8ks086Tw2zH0uyMv7HcRr\/6\/EvvhnsPrsrxwX7rwU\/0ODig\/eV3mh3N1ld8eraWPaX6+64s9McesfrqcHfg1MpoifxcVEWjukyw+9AtFPl\/I71pER3Of6j4bv7HI54s+MChhqLlPdZ\/P3qMmFuo5h5NnTOhjM5tReN2yT51n5\/v7J3F0vi46fk+ne7aX0i9l6If7mpufTX3f5wsqv9TAD2fJLT9VrTn7UeZnM5tR+v0LMQOHXwFnxe2\/warGFRWf8QDjOLfP",
+         "data":"eJztmG9PwjAQh6u8ECUBkQQU4pgO+acC3\/\/TccY2Wy5Heyu3o5C9eLKVdtnD7wo7yIwxmWVOHOeeccaY7wMD4LnyWizYjzrfW\/ActX5H+FHXSPr5fKixdH5U\/U7Nc9aPgQnwKuDXBHfAPdAJ1EGCN2BagxnwCDwBPYH7LwPzH8BnDQpBvyXyW3v8FsAW+FL0q5NfwcxT2i\/knIrf4USWzufH\/O\/\/X2U\/vOfwOJQX3pcSftTnYI3yc+chP5yrVH4rNHY+dfNrur7YE7Ox9ePyLeD3YOma8lnko8Nc53g\/029gyv7CvVcfPeY66roYv4kp+4sh8BJgxFxHXdfk3tMmN3Sfk5JnrugT05tpeO3skfPdWX3+FEL358Lx+3M62LWafvsE\/fC+Ts0vpr7V\/kLLz\/2Wj+ktUsuPqnXKfpr5xfRmmn63Qp6Aw7WAs2rqf6O2xi0tl+EICkK4NQ==",
          "encoding":"base64",
          "height":40,
          "name":"Ground",
@@ -20,7 +20,7 @@
  "tilesets":[
         {
          "firstgid":1,
-         "source":"desert.tsx"
+         "source":"..\/..\/..\/..\/Downloads\/tiled-2016.05.25-linux64\/examples\/desert.tsx"
         }],
  "tilewidth":32,
  "version":1,
