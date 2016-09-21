@@ -38,16 +38,22 @@ const startRendering = () => {
     const junTexture = pixi.utils.TextureCache[jun];
     const junSprite = new pixi.Sprite(junTexture);
 
-    const update = () => {
-      junSprite.x = (junSprite.x + 5) % 300;
-      junSprite.y = (junSprite.y + 5) % 300;
-      junSprite.rotation += 0.1;
+    const update = (time) => {
+      const timeInSeconds = time / 1000;
+      
+      junSprite.x = (junSprite.x + (50 * timeInSeconds)) % 300;
+      junSprite.y = (junSprite.y + (50 * timeInSeconds)) % 300;
+      junSprite.rotation += (timeInSeconds * 0.5);
     };
 
-    const renderLoop = () => {
-      requestAnimationFrame(renderLoop);
-      update();
+    let lastTime;
+    const renderLoop = (timestamp) => {
+      const timePassed = timestamp - lastTime;
+      lastTime = timestamp;
+
+      update(timePassed || 0);
       renderer.render(stage);
+      requestAnimationFrame(renderLoop);
     };
 
     const dict = textureBuilder.buildTilesetDict(desertParsed.tilesets, tilesetsMap, tilesetImagesMap);
