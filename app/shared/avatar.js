@@ -2,12 +2,10 @@ import React from 'react';
 
 export const Avatar = React.createClass({
 
-
-
   render() {
 
     var setCharacter = {
-      backgroundImage: `url(/assets/avatars/${this.props.character}.png)`
+      backgroundImage: `url(/app/assets/avatars/${this.props.character}.png)`
     };
 
     return (
