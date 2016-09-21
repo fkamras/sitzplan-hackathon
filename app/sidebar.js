@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 
+import { Avatar } from './shared/avatar.js';
 
 export const Sidebar = React.createClass({
 
@@ -16,6 +17,7 @@ export const Sidebar = React.createClass({
           <form>
             <input type="" placeholder="Search..." />
           </form>
+          <Avatar character="kavi" />
         </aside>
       );
 
