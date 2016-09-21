@@ -13,5 +13,6 @@ defmodule Sitzplan.Router do
     pipe_through :api
 
     resources "/departments", DepartmentController
+    resources "/users", UserController
   end
 end
