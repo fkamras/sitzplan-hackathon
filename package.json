@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --port='1988'"
+    "start": "node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --port='1988' --host=0.0.0.0"
   },
   "author": "",
   "license": "GPL-3.0",
