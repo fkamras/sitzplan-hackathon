@@ -1,8 +1,11 @@
 module.exports = {
-  entry: './app/app.js',
+  entry: './app/routing.js',
   output: {
     path: 'builds',
     filename: 'bundle.js'
+  },
+  devServer: {
+    historyApiFallback: true
   },
   module: {
     loaders: [
@@ -14,7 +17,7 @@ module.exports = {
         test: /\.js$/,
         loader: 'babel',
         query: {
-          presets: ['es2015'],
+          presets: ['es2015', 'react'],
           plugins: ['transform-object-rest-spread']
         },
         exclude: /node_modules/
