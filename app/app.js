@@ -1,5 +1,3 @@
-require('./styles/main.scss');
-
 require('file?name=[name].[ext]!./index.html');
 import tiled from './lib/tiled.js';
 import pixi from 'pixi.js';
