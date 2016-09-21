@@ -6,6 +6,7 @@ import _ from 'lodash';
 const desert = JSON.parse(require('raw!./example/desert.json'));
 const desertTileset = require('xml!./example/desert.tsx');
 const image = '/' + require('file!./example/tmw_desert_spacing.png');
+const jun =  '/' + require('file!./example/jun.jpg');
 
 import textureBuilder from './lib/texture-builder.js';
 import stageBuilder from './lib/stage-builder.js';
@@ -22,7 +23,8 @@ const stage = new pixi.Container();
 
 const desertParsed = tiled.parse(desert);
 const loader = pixi.loader
-        .add(image);
+        .add(image)
+        .add(jun);
 
 const container = document.getElementById('map-container');
 const parkingSpace = document.getElementById('map-parking-space');
@@ -32,13 +34,29 @@ const startRendering = () => {
   const renderer = pixi.autoDetectRenderer(2000, 2000);
 
   const setup = () => {
+
+    const junTexture = pixi.utils.TextureCache[jun];
+    const junSprite = new pixi.Sprite(junTexture);
+
+    const update = () => {
+      junSprite.x = (junSprite.x + 5) % 300;
+      junSprite.y = (junSprite.y + 5) % 300;
+    };
+
+    const renderLoop = () => {
+      requestAnimationFrame(renderLoop);
+      update();
+      renderer.render(stage);
+    };
+
     const dict = textureBuilder.buildTilesetDict(desertParsed.tilesets, tilesetsMap, tilesetImagesMap);
     const map = stageBuilder.buildStage(desertParsed, dict);
 
     stage.addChild(map);
+    stage.addChild(junSprite);
 
     container.appendChild(renderer.view);
-    renderer.render(stage);
+    renderLoop();
   };
 
   loader.load(setup);
