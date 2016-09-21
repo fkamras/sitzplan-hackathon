@@ -4,13 +4,12 @@ import { Router, Route, Link, hashHistory, IndexRoute } from 'react-router'
 
 import css from './styles/main.scss';
 
-import { GameMap } from './game-map.js';
-
 require('file?name=[name].[ext]!./index.html');
 
 import { App } from './app-component.js';
 import { Home } from './home.js';
 import { SignUp } from './sign-up.js';
+import { Game } from './game.js';
 
 const LogIn = React.createClass({
   render() {
@@ -39,7 +38,7 @@ render((
       <IndexRoute component={Home}/>
       <Route path="signup" component={SignUp}/>
       <Route path="login" component={LogIn} />
-      <Route path="map" component={GameMap} />
+      <Route path="map" component={Game} />
       <Route path="*" component={NoMatch}/>
     </Route>
   </Router>
