@@ -1,0 +1,34 @@
+label {
+  display:block;
+  margin-bottom:10px;
+  font-size:8px;
+}
+
+input {
+  display:block;
+  width:100%;
+  margin-top: 5px;
+  font-size:16px;
+  padding:4px;
+  border:2px groove;
+  font-family: monospace;
+  &:focus {
+    outline:none;
+    background:whitesmoke;
+  }
+}
+
+
+.button {
+  display:block;
+  width:100%;
+  font-size:12px;
+  padding:12px;
+  text-transform: uppercase;
+}
+
+
+.button--primary {
+  background:$primary-color;
+  color:white;
+}

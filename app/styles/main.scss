@@ -1,12 +1,7 @@
-@import '~normalize.css/normalize.css';
-
-html, body {
-  height:100%;
-}
-
-.container {
-  height:100%;
-  canvas {
-    display:block;
-  }
-}
+@import 'variables';
+@import 'base';
+@import 'forms';
+@import 'app';
+@import 'game';
+@import 'hero';
+@import 'wrapper';

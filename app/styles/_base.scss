@@ -1,0 +1,14 @@
+@import '~normalize.css/normalize.css';
+
+html, body {
+  height:100%;
+}
+
+body {
+  background: #000 url('../assets/app-bg.png') center center;
+  font-family:$pixelFont;
+}
+
+* {
+  box-sizing:border-box;
+}
