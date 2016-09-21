@@ -15,7 +15,8 @@ module.exports = {
       },
       {
         test: /\.png$/,
-        loader: 'file!img?progressive=true'
+        loader: 'file',
+        exclude: /example/
       },
       {
         test: /\.js$/,
