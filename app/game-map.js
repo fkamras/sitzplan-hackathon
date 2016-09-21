@@ -41,6 +41,7 @@ const startRendering = () => {
     const update = () => {
       junSprite.x = (junSprite.x + 5) % 300;
       junSprite.y = (junSprite.y + 5) % 300;
+      junSprite.rotation += 0.1;
     };
 
     const renderLoop = () => {
