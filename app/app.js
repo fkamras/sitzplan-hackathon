@@ -3,6 +3,7 @@ require('./styles/main.scss');
 require('file?name=[name].[ext]!./index.html');
 import tiled from './lib/tiled.js';
 import textureBuilder from './lib/texture-builder.js';
+import stageBuilder from './lib/stage-builder.js';
 import pixi from 'pixi.js';
 
 import _ from 'lodash';
@@ -27,35 +28,11 @@ const stage = new pixi.Container();
 
 const desertParsed = tiled.parse(desert);
 
-const background = new pixi.Container();
-
-const fillBackground = (tilemap, textureDict, container) => {
-  const fillLayer = (layer) => {
-    _.times(tilemap.height, (y) => {
-      _.times(tilemap.width, (x) => {
-        const tilePosition = x + tilemap.width * y;
-
-        const tileNumber = layer.data[tilePosition];
-
-        const texture = textureDict[tileNumber];
-        const sprite = new pixi.Sprite(texture);
-
-        sprite.x = x * tilemap.tilewidth;
-        sprite.y = y * tilemap.tileheight;
-
-        container.addChild(sprite);
-      });
-    });
-  };
-
-  _.each(tilemap.layers, fillLayer);
-};
-
 const setup = () => {
   const dict = textureBuilder.buildTilesetDict(desertParsed.tilesets, tilesetsMap, tilesetImagesMap);
-  fillBackground(desertParsed, dict, background);
+  const map = stageBuilder.buildStage(desertParsed, dict);
 
-  stage.addChild(background);
+  stage.addChild(map);
 
   container.appendChild(renderer.view);
   renderer.render(stage);
