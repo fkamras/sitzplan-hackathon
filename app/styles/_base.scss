@@ -1,0 +1,32 @@
+@import '~normalize.css/normalize.css';
+
+html, body {
+  height:100%;
+}
+
+body {
+  background: #000 url('../assets/app-bg.png') center center;
+  font-family:$pixelFont;
+}
+
+* {
+  box-sizing:border-box;
+}
+
+#root, .app, #map-container {
+  height:100%;
+}
+
+.container {
+  height:100%;
+  canvas {
+    display:block;
+    border: 4px groove;
+  }
+}
+
+p {
+  font-size: 14px;
+  line-height:1.5em;
+  font-family: monospace;
+}

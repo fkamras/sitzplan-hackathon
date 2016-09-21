@@ -1,35 +1,15 @@
 import React from 'react'
 import { render } from 'react-dom'
-import { Router, Route, Link, browserHistory } from 'react-router'
+import { Router, Route, Link, hashHistory, IndexRoute } from 'react-router'
 
-import { GameMap } from './game-map.js';
+import css from './styles/main.scss';
 
 require('file?name=[name].[ext]!./index.html');
 
-const App = React.createClass({
-  render() {
-    return (
-      <div>
-        <Link to="/">Home</Link>
-        <Link to="/signup/">Sing Up</Link>
-        <Link to="/login/">Log In</Link>
-        <Link to="/map/">Map</Link>
-        <h1>Hello!</h1>
-        {this.props.children}
-      </div>
-    )
-  }
-})
-
-const SignUp = React.createClass({
-  render() {
-    return (
-      <div>
-        SignUp
-      </div>
-    )
-  }
-});
+import { App } from './app-component.js';
+import { Home } from './home.js';
+import { SignUp } from './sign-up.js';
+import { Game } from './game.js';
 
 const LogIn = React.createClass({
   render() {
@@ -53,11 +33,12 @@ const NoMatch = React.createClass({
 // instead, all you really need is a single root route, you don't need to
 // colocate the entire config).
 render((
-  <Router history={browserHistory}>
+  <Router history={hashHistory}>
     <Route path="/" component={App}>
+      <IndexRoute component={Home}/>
       <Route path="signup" component={SignUp}/>
       <Route path="login" component={LogIn} />
-      <Route path="map" component={GameMap} />
+      <Route path="map" component={Game} />
       <Route path="*" component={NoMatch}/>
     </Route>
   </Router>

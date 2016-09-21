@@ -14,6 +14,10 @@ module.exports = {
         loader: 'ify-loader'
       },
       {
+        test: /\.png$/,
+        loader: 'file!img?progressive=true'
+      },
+      {
         test: /\.js$/,
         loader: 'babel',
         query: {

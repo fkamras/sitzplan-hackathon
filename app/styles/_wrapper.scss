@@ -1,0 +1,17 @@
+.wrapper {
+  background:rgb(180, 180, 180);
+  padding:10px;
+  border-width: 4px;
+  border-style: groove;
+}
+
+.wrapper--pos-center {
+  margin:0px auto;
+  position: relative;
+  top:60px;
+  max-width: 400px;
+}
+
+.wrapper--fs {
+  height:100%;
+}

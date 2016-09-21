@@ -31,7 +31,9 @@ const parkingSpace = document.getElementById('map-parking-space');
 
 const startRendering = () => {
 
-  const renderer = pixi.autoDetectRenderer(2000, 2000);
+  console.log(container.offsetWidth, container.offsetHeight);
+
+  const renderer = pixi.autoDetectRenderer(container.offsetWidth, container.offsetHeight);
 
   const setup = () => {
 
@@ -40,7 +42,7 @@ const startRendering = () => {
 
     const update = (time) => {
       const timeInSeconds = time / 1000;
-      
+
       junSprite.x = (junSprite.x + (50 * timeInSeconds)) % 300;
       junSprite.y = (junSprite.y + (50 * timeInSeconds)) % 300;
       junSprite.rotation += (timeInSeconds * 0.5);
@@ -84,7 +86,7 @@ export const GameMap = React.createClass({
 
   render() {
     return (
-        <div ref='container' className="container"></div>
+        <div ref='container' className="container game__main"></div>
     );
   }
 
