@@ -2,12 +2,17 @@ import React from 'react';
 
 export const SignUp = React.createClass({
 
+  signUp(e) {
+    e.preventDefault();
+    this.props.signUp();
+  },
+
   render() {
 
     return (
         <div className="wrapper wrapper--pos-center">
           <h3>Sign Up</h3>
-          <form>
+          <form onSubmit={this.signUp}>
             <label>
               First Name
               <input type="text" />

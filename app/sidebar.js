@@ -6,8 +6,6 @@ import { UserBlock } from './shared/user-block.js';
 
 export const Sidebar = React.createClass({
 
-  user: false,
-
   render() {
 
     return (
@@ -20,7 +18,6 @@ export const Sidebar = React.createClass({
           <form>
             <input type="" placeholder="Search..." />
           </form>
-          { this.state.price ? <div>{this.state.price}</div> : null }
           <div>
             <UserBlock />
             <UserBlock />

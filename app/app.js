@@ -1,41 +1,28 @@
-require('file?name=[name].[ext]!./index.html');
-import tiled from './lib/tiled.js';
-import textureBuilder from './lib/texture-builder.js';
-import stageBuilder from './lib/stage-builder.js';
-import pixi from 'pixi.js';
+import React from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { Link } from 'react-router';
 
-import _ from 'lodash';
+import * as actionCreators from './actions/index.js';
 
-const desert = JSON.parse(require('raw!./example/desert.json'));
-const desertTileset = require('xml!./example/desert.tsx');
-const image = require('file!./example/tmw_desert_spacing.png');
+function mapStateToProps(state) {
+  return {}
+}
 
-const tilesetsMap = {
-  'desert.tsx': desertTileset
-};
+function mapDispachToProps(dispatch) {
+  return bindActionCreators(actionCreators, dispatch);
+}
 
-const tilesetImagesMap = {
-  'tmw_desert_spacing.png': image
-};
 
-const container = document.getElementsByClassName('container')[0];
 
-const renderer = pixi.autoDetectRenderer(2000, 2000);
+const AppClass = React.createClass({
+  render() {
+    return (
+      <div className="app">
+        {React.cloneElement({...this.props}.children, {...this.props})}
+      </div>
+    )
+  }
+});
 
-const stage = new pixi.Container();
-
-const desertParsed = tiled.parse(desert);
-
-const setup = () => {
-  const dict = textureBuilder.buildTilesetDict(desertParsed.tilesets, tilesetsMap, tilesetImagesMap);
-  const map = stageBuilder.buildStage(desertParsed, dict);
-
-  stage.addChild(map);
-
-  container.appendChild(renderer.view);
-  renderer.render(stage);
-};
-
-pixi.loader
-  .add(image)
-  .load(setup);
+export const App = connect(mapStateToProps, mapDispachToProps)(AppClass);
