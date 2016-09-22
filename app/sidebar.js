@@ -2,8 +2,11 @@ import React from 'react';
 import { Link } from 'react-router';
 
 import { Avatar } from './shared/avatar.js';
+import { UserBlock } from './shared/user-block.js';
 
 export const Sidebar = React.createClass({
+
+  user: false,
 
   render() {
 
@@ -17,7 +20,14 @@ export const Sidebar = React.createClass({
           <form>
             <input type="" placeholder="Search..." />
           </form>
-          <Avatar character="kavi" />
+          { this.state.price ? <div>{this.state.price}</div> : null }
+          <div>
+            <UserBlock />
+            <UserBlock />
+            <UserBlock />
+            <UserBlock />
+            <UserBlock />
+          </div>
         </aside>
       );
 
