@@ -1,10 +1,14 @@
 import React from 'react';
 
+import UserService from './services/user.js';
+
 export const SignUp = React.createClass({
 
   signUp(e) {
     e.preventDefault();
-    this.props.signUp();
+    UserService.create().then(function(data){
+      this.props.setCurrentUser(data);
+    }.bind(this));
   },
 
   render() {

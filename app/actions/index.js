@@ -1,14 +1,7 @@
-export function signUp(user) {
+export function setCurrentUser(user) {
   return {
-    type: 'SIGN_UP',
+    type: 'SET_CURRENT_USER',
     user
-  }
-}
-
-export function logIn(username) {
-  return {
-    type: 'LOG_IN',
-    username
   }
 }
 

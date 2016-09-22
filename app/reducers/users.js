@@ -1,9 +1,8 @@
 function users(state = [], action) {
 
   switch(action.type) {
-    case 'SIGN_UP':
-      //do the sign up
-      console.log('sign up');
+    case 'SET_CURRENT_USER':
+      return {...state, currentUser: action.user}
     default:
       return state;
   }
