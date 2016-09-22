@@ -10,16 +10,7 @@ import { App } from './app-component.js';
 import { Home } from './home.js';
 import { SignUp } from './sign-up.js';
 import { Game } from './game.js';
-
-const LogIn = React.createClass({
-  render() {
-    return (
-      <div>
-        LogIn
-      </div>
-    )
-  }
-});
+import { LogIn } from './login.js';
 
 const NoMatch = React.createClass({
   render() {
