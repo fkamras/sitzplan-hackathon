@@ -18,6 +18,30 @@
 
 .avatar {
   display:inline-block;
-  width:20px;
-  height:20px;
+  width:32px;
+  height:47px;
+}
+
+
+.user-block {
+
+  background:black;
+  background:rgb(190,190,190);
+  padding:5px;
+  border:2px groove;
+  margin:10px 0;
+  cursor:pointer;
+
+  .avatar {
+    float:left;
+    margin-right:10px;
+  }
+
+}
+
+.user-block__label {
+  margin:0;
+  small {
+    display:block;
+  }
 }
