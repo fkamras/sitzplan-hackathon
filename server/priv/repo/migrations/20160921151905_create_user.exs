@@ -5,8 +5,8 @@ defmodule Sitzplan.Repo.Migrations.CreateUser do
     create table(:users) do
       add :name, :string, null: false
       add :work_title, :string
-      add :mapx, :integer, null: false
-      add :mapy, :integer, null: false
+      add :mapx, :integer
+      add :mapy, :integer
       add :phone, :string
       add :email, :string
       add :social, :map
