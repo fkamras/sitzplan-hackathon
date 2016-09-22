@@ -21,6 +21,6 @@ defmodule Sitzplan.User do
   def changeset(struct, params \\ %{}) do
     struct
     |> cast(params, [:name, :work_title, :mapx, :mapy, :phone, :email, :social, :quote])
-    |> validate_required([:name, :mapx, :mapy])
+    |> validate_required([:name])
   end
 end
