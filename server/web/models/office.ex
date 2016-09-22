@@ -3,6 +3,7 @@ defmodule Sitzplan.Office do
 
   schema "offices" do
     field :name, :string
+    has_many :maps, Sitzplan.Map
 
     timestamps()
   end

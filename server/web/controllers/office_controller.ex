@@ -4,7 +4,7 @@ defmodule Sitzplan.OfficeController do
   alias Sitzplan.Office
 
   def index(conn, _params) do
-    offices = Repo.all(Office)
+    offices = Repo.all(Office) |> Repo.preload([:maps])
     render(conn, "index.json", offices: offices)
   end
 
@@ -25,7 +25,7 @@ defmodule Sitzplan.OfficeController do
   end
 
   def show(conn, %{"id" => id}) do
-    office = Repo.get!(Office, id)
+    office = Repo.get!(Office, id) |> Repo.preload([:maps])
     render(conn, "show.json", office: office)
   end
 
