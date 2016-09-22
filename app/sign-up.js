@@ -37,11 +37,6 @@ export const SignUp = React.createClass({
               <input type="text" name="user[email]" />
             </label>
             <label>
-              Position
-              <input type="text" name="user[mapx]" value="123" />
-              <input type="text" name="user[mapy]" value="123" />
-            </label>
-            <label>
               Quote
               <textarea name="user[quote]" >
 

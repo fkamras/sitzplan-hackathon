@@ -8,6 +8,11 @@ require('file?name=[name].[ext]!./index.html');
 
 import { App } from './app.js';
 import { Home } from './home.js';
+
+import { Settings } from './settings.js';
+import { Offices } from './offices.js';
+import { Departments } from './departments.js';
+
 import { SignUp } from './sign-up.js';
 import { Game } from './game.js';
 import { LogIn } from './login.js';
@@ -15,7 +20,12 @@ import { LogIn } from './login.js';
 const NoMatch = React.createClass({
   render() {
     return (
-      <h1>404</h1>
+      <div className="hero">
+        <h1 className="hero__title">404 <small>NOT FOUND</small></h1>
+        <ul className="hero__navigation">
+          <li><Link to="/" >Home</Link></li>
+        </ul>
+      </div>
     )
   }
 });
@@ -28,6 +38,9 @@ render((
     <Router history={hashHistory}>
       <Route path="/" component={App}>
         <IndexRoute component={Home}/>
+        <Route path="settings" component={Settings}/>
+        <Route path="offices" component={Offices}/>
+        <Route path="departments" component={Departments}/>
         <Route path="signup" component={SignUp}/>
         <Route path="login" component={LogIn} />
         <Route path="map" component={Game} />
