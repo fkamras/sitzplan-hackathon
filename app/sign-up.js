@@ -14,6 +14,27 @@ export const SignUp = React.createClass({
     });
   },
 
+  getMapOptions(officeKey) {
+    return (
+        <select>
+          {this.props.offices[officeKey].maps.map((map, key) => <option key={key} >{map.name}</option>)}
+        </select>
+      );
+  },
+
+  setMapsSelect() {
+    const mapSelect = this.props.offices[this.refs.officeSelect.value] ?  this.getMapOptions(this.refs.officeSelect.value) : '';
+    this.setState({
+      mapSelect
+    });
+  },
+
+  getInitialState() {
+    return {
+      mapSelect: ''
+    };
+  },
+
   render() {
 
     return (
@@ -35,6 +56,14 @@ export const SignUp = React.createClass({
             <label>
               Email
               <input type="text" name="user[email]" />
+            </label>
+            <label>
+              Office
+              <select ref="officeSelect" name="office" onChange={this.setMapsSelect} >
+                <option></option>
+                {this.props.offices.map((item, key) => <option value={key} key={key} >{item.name}</option>)}
+              </select>
+              {this.state.mapSelect}
             </label>
             <label>
               Quote

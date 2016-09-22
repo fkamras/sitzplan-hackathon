@@ -24,3 +24,28 @@ export function userSelect(username) {
     username
   }
 }
+
+//Offices
+
+export function addOffice(office) {
+  return {
+    type: 'ADD_OFFICE',
+    office
+  }
+}
+
+export function addMap(officeKey, map) {
+  return {
+    type: 'ADD_MAP',
+    officeKey,
+    map
+  }
+}
+
+export function removeMap(officeKey, mapKey) {
+ return {
+    type: 'REMOVE_MAP',
+    officeKey,
+    mapKey
+  }
+}

@@ -1,15 +1,15 @@
-import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { Link } from 'react-router';
+import * as actionCreators from './actions/index.js';
+import { Main } from './main.js';
 
 //fetch polyfill for ajax calls
 import 'whatwg-fetch';
 
-import * as actionCreators from './actions/index.js';
-
 function mapStateToProps(state) {
-  return {}
+  return {
+    offices: state.offices
+  };
 }
 
 function mapDispachToProps(dispatch) {
@@ -18,14 +18,5 @@ function mapDispachToProps(dispatch) {
 
 
 
-const AppClass = React.createClass({
-  render() {
-    return (
-      <div className="app">
-        {React.cloneElement({...this.props}.children, {...this.props})}
-      </div>
-    )
-  }
-});
+export const App = connect(mapStateToProps, mapDispachToProps)(Main)
 
-export const App = connect(mapStateToProps, mapDispachToProps)(AppClass);

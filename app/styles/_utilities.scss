@@ -1,0 +1,6 @@
+.removable {
+  cursor: pointer;
+  &:hover {
+    text-decoration: line-through;
+  }
+}

@@ -11,6 +11,7 @@ import { Home } from './home.js';
 
 import { Settings } from './settings.js';
 import { Offices } from './offices.js';
+import { Office } from './office.js';
 import { Departments } from './departments.js';
 
 import { SignUp } from './sign-up.js';
@@ -40,6 +41,7 @@ render((
         <IndexRoute component={Home}/>
         <Route path="settings" component={Settings}/>
         <Route path="offices" component={Offices}/>
+        <Route path="offices/:officeKey" component={Office} />
         <Route path="departments" component={Departments}/>
         <Route path="signup" component={SignUp}/>
         <Route path="login" component={LogIn} />

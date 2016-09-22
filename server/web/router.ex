@@ -15,6 +15,7 @@ defmodule Sitzplan.Router do
     resources "/departments", DepartmentController
     resources "/users", UserController
     resources "/offices", OfficeController
+    resources "/maps", MapController
 
     get "/avatars", AvatarController, :index
   end

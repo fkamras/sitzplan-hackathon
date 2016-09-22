@@ -5,7 +5,22 @@ import { hashHistory } from 'react-router';
 import rootReducer from './reducers/index.js';
 
 
-const defaultState = { };
+const defaultState = {
+  offices: [{
+    name: 'Berlin',
+    maps: [
+      { name: 'Main Room' },
+      { name: 'Administrations' },
+      { name: 'BDR' }
+    ]
+  }, {
+    name: 'Framingham',
+    maps: [
+      { name: '1st Floor' },
+      { name: '2nd Floor' }
+    ]
+  }]
+};
 
 const store = createStore(rootReducer, defaultState, compose(
     window.devToolsExtension ? window.devToolsExtension() : f => f

@@ -11,6 +11,7 @@ defmodule Sitzplan.OfficeView do
 
   def render("office.json", %{office: office}) do
     %{id: office.id,
-      name: office.name}
+      name: office.name,
+      maps: render_many(office.maps, Sitzplan.MapView, "map.json")}
   end
 end
