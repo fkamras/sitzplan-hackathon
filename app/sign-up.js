@@ -4,11 +4,14 @@ import UserService from './services/user.js';
 
 export const SignUp = React.createClass({
 
-  signUp(e) {
+  signUp(e, data) {
     e.preventDefault();
-    UserService.create().then(function(data){
+    var data = new FormData(this.refs.signUpForm);
+    UserService.create(data).then(function(data){
       this.props.setCurrentUser(data);
-    }.bind(this));
+    }.bind(this), (err) => {
+
+    });
   },
 
   render() {
@@ -16,30 +19,33 @@ export const SignUp = React.createClass({
     return (
         <div className="wrapper wrapper--pos-center">
           <h3>Sign Up</h3>
-          <form onSubmit={this.signUp}>
+          <form ref="signUpForm" onSubmit={this.signUp}>
             <label>
-              First Name
-              <input type="text" />
-            </label>
-            <label>
-              Last Name
-              <input type="text" />
+              Full Name
+              <input type="text" name="user[name]" />
             </label>
             <label>
               Work Title
-              <input type="text" />
-            </label>
-            <label>
-              Department
-              <input type="text" />
+              <input type="text" name="user[work_title]" />
             </label>
             <label>
               Phone Number
-              <input type="text" />
+              <input type="text" name="user[phone]" />
             </label>
             <label>
               Email
-              <input type="text" />
+              <input type="text" name="user[email]" />
+            </label>
+            <label>
+              Position
+              <input type="text" name="user[mapx]" value="123" />
+              <input type="text" name="user[mapy]" value="123" />
+            </label>
+            <label>
+              Quote
+              <textarea name="user[quote]" >
+
+              </textarea>
             </label>
             <button className="button button--primary" type="submit">
               Sign Up

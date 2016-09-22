@@ -14,6 +14,10 @@
   float:left;
   width:70%;
   height:100%;
+  cursor: -webkit-grab; cursor: -moz-grab;
+  &:active {
+    cursor: -webkit-grabbing; cursor: -moz-grabbing;
+  }
 }
 
 .avatar {
