@@ -26,7 +26,7 @@ const loader = pixi.loader
         .add(image)
         .add(jun);
 
-var renderer;
+let renderer;
 
 const container = document.getElementById('map-container');
 const parkingSpace = document.getElementById('map-parking-space');
@@ -65,6 +65,30 @@ const startRendering = () => {
     stage.addChild(junSprite);
 
     container.appendChild(renderer.view);
+
+    // Interactivty
+
+    stage.interactive = true;
+    let dragging = false;
+    let position = undefined;
+
+    stage.on('mousedown', ({data}) => {
+      dragging = true;
+      position = {...data.global};
+    });
+    stage.on('mouseup', () => dragging = false);
+    stage.on('mousemove', ({data}) => {
+      if(dragging) {
+        const newPosition = data.global;
+        const dx = newPosition.x - position.x;
+        const dy = newPosition.y - position.y;
+
+        position = {...newPosition};
+        stage.x += dx;
+        stage.y += dy;
+      };
+    });
+
     renderLoop();
   };
 
