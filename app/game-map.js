@@ -26,14 +26,14 @@ const loader = pixi.loader
         .add(image)
         .add(jun);
 
+var renderer;
+
 const container = document.getElementById('map-container');
 const parkingSpace = document.getElementById('map-parking-space');
 
 const startRendering = () => {
 
-  console.log(container.offsetWidth, container.offsetHeight);
-
-  const renderer = pixi.autoDetectRenderer(container.offsetWidth, container.offsetHeight);
+  renderer = pixi.autoDetectRenderer();
 
   const setup = () => {
 
@@ -75,13 +75,20 @@ startRendering();
 
 export const GameMap = React.createClass({
 
+  handleResize() {
+    renderer.resize(container.offsetWidth, container.offsetHeight);
+  },
+
   componentDidMount() {
     const internalContainer = this.refs.container;
     internalContainer.appendChild(container);
+    this.handleResize();
+    window.addEventListener('resize', this.handleResize);
   },
 
   componentWillUnmount() {
     parkingSpace.appendChild(container);
+    window.removeEventListener('resize', this.handleResize);
   },
 
   render() {
