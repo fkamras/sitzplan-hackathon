@@ -17,5 +17,9 @@ defmodule Sitzplan.Router do
     resources "/maps", MapController
 
     get "/avatars", AvatarController, :index
+
+    post "/session", SessionController, :create
+    get "/session", SessionController, :show
+    delete "/session", SessionController, :delete
   end
 end
