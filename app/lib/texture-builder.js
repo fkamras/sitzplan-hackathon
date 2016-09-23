@@ -18,7 +18,8 @@ const buildTilesetDict = (tilesets, tilesetsMap, tilesetImagesMap) => {
       const yPos = (tileNumber - xPos) / imagesPerRow;
 
       const rect = new pixi.Rectangle(1 + (xPos * tileWidth) + xPos, 1 + (yPos * tileWidth) + yPos, tileWidth, tileWidth);
-      const texture = new pixi.Texture(pixi.utils.TextureCache[realImage], rect);
+      const baseTexture = new pixi.Texture.fromImage(realImage); 
+      const texture = new pixi.Texture(baseTexture, rect);
 
       return texture;
     };

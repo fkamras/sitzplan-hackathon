@@ -3,8 +3,8 @@ import { map, each } from 'lodash';
 
 const buildAvatarSprites = (avatars, tilesize) => {
   const avatarSprites = map(avatars, ({image, position}) => {
-    const avatarTexture = new Texture.fromImage(image);
-    avatarTexture.frame = new Rectangle(0,0,32,48);
+    const avatarBaseTexture = new Texture.fromImage(image);
+    const avatarTexture = new Texture(avatarBaseTexture, Rectangle(0,0,32,48));
     const avatarSprite = new Sprite(avatarTexture);
 
     avatarSprite.x = position.x * tilesize;

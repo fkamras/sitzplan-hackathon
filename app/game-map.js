@@ -32,6 +32,14 @@ const container = document.getElementById('map-container');
 const parkingSpace = document.getElementById('map-parking-space');
 
 const avatarStage = new pixi.Container();
+const floorStage = new pixi.Container();
+
+const loadBackground = () => {
+  const dict = textureBuilder.buildTilesetDict(desertParsed.tilesets, tilesetsMap, tilesetImagesMap);
+  const map = stageBuilder.buildStage(desertParsed, dict);
+
+  floorStage.addChild(map);
+};
 
 export const GameMapFactory = (store) => {
   const startRendering = () => {
@@ -39,7 +47,6 @@ export const GameMapFactory = (store) => {
     renderer = pixi.autoDetectRenderer();
 
     const setup = () => {
-
       const update = (time) => {
         const timeInSeconds = time / 1000;
         _.map(avatarStage.children, (child) => {
@@ -57,13 +64,14 @@ export const GameMapFactory = (store) => {
         requestAnimationFrame(renderLoop);
       };
 
-      const dict = textureBuilder.buildTilesetDict(desertParsed.tilesets, tilesetsMap, tilesetImagesMap);
-      const map = stageBuilder.buildStage(desertParsed, dict);
+      // const dict = textureBuilder.buildTilesetDict(desertParsed.tilesets, tilesetsMap, tilesetImagesMap);
+      // const map = stageBuilder.buildStage(desertParsed, dict);
 
-      stage.addChild(map);
+      // stage.addChild(map);
 
       container.appendChild(renderer.view);
 
+      stage.addChild(floorStage);
       stage.addChild(avatarStage);
 
       // Interactivty
@@ -76,6 +84,7 @@ export const GameMapFactory = (store) => {
         dragging = true;
         position = {...data.global};
       });
+
       stage.on('mouseup', () => dragging = false);
       stage.on('mousemove', ({data}) => {
         if(dragging) {
@@ -112,7 +121,7 @@ export const GameMapFactory = (store) => {
 
       avatars.populateStage({stage: avatarStage, avatars: mockAvatarData});
     });
-
+  loadBackground();
 
   const GameMap = React.createClass({
 
