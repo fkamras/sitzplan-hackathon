@@ -3,10 +3,11 @@ import tiled from './lib/tiled.js';
 import pixi from 'pixi.js';
 import _ from 'lodash';
 
+import avatars from './lib/avatars.js';
+
 const desert = JSON.parse(require('raw!./example/desert.json'));
 const desertTileset = require('xml!./example/desert.tsx');
 const image = '/' + require('file!./example/tmw_desert_spacing.png');
-const jun =  '/' + require('file!./example/jun.jpg');
 
 import textureBuilder from './lib/texture-builder.js';
 import stageBuilder from './lib/stage-builder.js';
@@ -23,13 +24,16 @@ const stage = new pixi.Container();
 
 const desertParsed = tiled.parse(desert);
 const loader = pixi.loader
-        .add(image)
-        .add(jun);
+        .add(image);
 
 let renderer;
 
 const container = document.getElementById('map-container');
 const parkingSpace = document.getElementById('map-parking-space');
+
+const context = require.context('./assets/avatars', true , /\.png$/);
+
+const avatarStage = new pixi.Container();
 
 const startRendering = () => {
 
@@ -37,15 +41,11 @@ const startRendering = () => {
 
   const setup = () => {
 
-    const junTexture = pixi.utils.TextureCache[jun];
-    const junSprite = new pixi.Sprite(junTexture);
-
     const update = (time) => {
       const timeInSeconds = time / 1000;
-
-      junSprite.x = (junSprite.x + (50 * timeInSeconds)) % 300;
-      junSprite.y = (junSprite.y + (50 * timeInSeconds)) % 300;
-      junSprite.rotation += (timeInSeconds * 0.5);
+      _.map(avatarStage.children, (child) => {
+        child.update(timeInSeconds);
+      });
     };
 
     let lastTime;
@@ -62,9 +62,10 @@ const startRendering = () => {
     const map = stageBuilder.buildStage(desertParsed, dict);
 
     stage.addChild(map);
-    stage.addChild(junSprite);
 
     container.appendChild(renderer.view);
+
+    stage.addChild(avatarStage);
 
     // Interactivty
 
@@ -96,6 +97,22 @@ const startRendering = () => {
 };
 
 startRendering();
+
+const avatarfiles = _.map(context.keys(), (avatarfilename) => {
+  return context(avatarfilename);
+});
+
+const mockAvatarData = _.map(avatarfiles, (avatarfile) => {
+  return {
+    position: {
+      x: Math.floor(Math.random() * 48),
+      y: Math.floor(Math.random() * 48)
+    },
+    image: '/' + avatarfile
+  };
+});
+
+avatars.populateStage({stage: avatarStage, avatars: mockAvatarData});
 
 export const GameMap = React.createClass({
 
