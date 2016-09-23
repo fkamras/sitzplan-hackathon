@@ -31,6 +31,9 @@ const buildAvatarSprites = (avatars, tilesize) => {
       }
     };
 
+    avatarSprite.interactive = true;
+    avatarSprite.on('click', () => console.log(image));
+
     return avatarSprite;
   });
 

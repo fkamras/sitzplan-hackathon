@@ -31,8 +31,6 @@ let renderer;
 const container = document.getElementById('map-container');
 const parkingSpace = document.getElementById('map-parking-space');
 
-const context = require.context('./assets/avatars', true , /\.png$/);
-
 const avatarStage = new pixi.Container();
 
 const startRendering = () => {
@@ -98,21 +96,25 @@ const startRendering = () => {
 
 startRendering();
 
-const avatarfiles = _.map(context.keys(), (avatarfilename) => {
-  return context(avatarfilename);
-});
+const avatarfiles =[];
 
-const mockAvatarData = _.map(avatarfiles, (avatarfile) => {
-  return {
-    position: {
-      x: Math.floor(Math.random() * 48),
-      y: Math.floor(Math.random() * 48)
-    },
-    image: '/' + avatarfile
-  };
-});
 
-avatars.populateStage({stage: avatarStage, avatars: mockAvatarData});
+fetch('/api/avatars')
+  .then((data) => data.json())
+  .then((data) => {
+    const mockAvatarData = _.map(data, (avatarfile) => {
+      return {
+        position: {
+          x: Math.floor(Math.random() * 32),
+          y: Math.floor(Math.random() * 32)
+        },
+        image: avatarfile
+      };
+    });
+
+    avatars.populateStage({stage: avatarStage, avatars: mockAvatarData});
+  });
+
 
 export const GameMap = React.createClass({
 
