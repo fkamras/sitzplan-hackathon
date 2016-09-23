@@ -24,8 +24,8 @@ export const Office = React.createClass({
 
   render() {
 
-    const { officeKey } = this.props.params;
-    const theOffice = this.props.offices[officeKey];
+    const { officeId } = this.props.params;
+    const theOffice = this.props.offices.find((item) => item.id === parseInt(officeId));
 
     return (
       <div className="wrapper wrapper--pos-center">

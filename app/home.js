@@ -12,7 +12,7 @@ export const Home = React.createClass({
           <li><Link to="/map/">Go</Link></li>
           <li><Link to="/signup/">Sign Up</Link></li>
           <li><Link to="/login/">Log In</Link></li>
-          <li><Link to="/settings/">Settings</Link></li>
+          <li><Link to="/offices/">Offices</Link></li>
         </ul>
         <p className="hero__footer">
           &copy;2016 Applause Creative Services
