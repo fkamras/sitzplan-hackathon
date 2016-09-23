@@ -3,9 +3,10 @@ defmodule Sitzplan.Map do
 
   schema "maps" do
     field :name, :string
-    field :file, :string
+    field :files, {:array, :string}
     field :floor, :integer
     belongs_to :office, Sitzplan.Office
+    has_many :users, Sitzplan.User
 
     timestamps()
   end
@@ -15,8 +16,8 @@ defmodule Sitzplan.Map do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:name, :file, :floor, :office_id])
-    |> validate_required([:name, :file, :floor, :office_id])
+    |> cast(params, [:name, :files, :floor, :office_id])
+    |> validate_required([:name, :files, :floor, :office_id])
     |> foreign_key_constraint(:office_id)
   end
 end

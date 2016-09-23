@@ -19,6 +19,6 @@ defmodule Sitzplan.UserView do
       email: user.email,
       social: user.social,
       quote: user.quote,
-      department_id: user.department_id}
+      map_id: user.map_id}
   end
 end

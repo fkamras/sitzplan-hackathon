@@ -12,8 +12,9 @@ defmodule Sitzplan.MapView do
   def render("map.json", %{map: map}) do
     %{id: map.id,
       name: map.name,
-      file: map.file,
+      files: map.files,
       floor: map.floor,
-      office_id: map.office_id}
+      office_id: map.office_id,
+      users: render_many(map.users, Sitzplan.UserView, "user.json")}
   end
 end
