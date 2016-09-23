@@ -4,13 +4,14 @@ function offices(state = [], action) {
     case 'ADD_OFFICE':
       return [...state, action.office];
     case 'ADD_MAP':
+      const officeKey = state.findIndex((office) => office.id === action.map.office_id );
       return [
-        ...state.splice(0, action.officeKey),
+        ...state.splice(0, officeKey),
         {
-          ...state[action.officeKey],
-          maps: [...state[action.officeKey].maps, action.map]
+          ...state[officeKey],
+          maps: [...state[officeKey].maps, action.map]
         },
-        ...state.splice(action.officeKey + 1)
+        ...state.splice(officeKey + 1)
       ];
     case 'REMOVE_MAP':
       return [

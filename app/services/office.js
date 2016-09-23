@@ -7,10 +7,10 @@ const Office = {
     });
   },
 
-  addMap(office_id, data) {
+  addMap(data) {
     return fetch('/api/maps', {
       method: 'POST',
-      body: { ...data, office_id }
+      body: data
     });
   },
 

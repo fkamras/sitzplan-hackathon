@@ -1,5 +1,7 @@
 import React from 'react';
 
+import OfficeService from './services/office.js';
+
 export const Office = React.createClass({
 
   removeMap(officeKey, mapKey) {
@@ -15,11 +17,40 @@ export const Office = React.createClass({
   },
 
   handleSubmit(e) {
+
     e.preventDefault();
-    this.props.addMap(this.props.params.officeKey, {
-      name: this.refs.newMapName.value
+
+    const data = new FormData(this.refs.mapForm);
+    OfficeService.addMap(data).then((res) => {
+      res.json().then((body) => {
+        console.log(body.data);
+        this.props.addMap(body.data);
+        this.refs.mapForm.reset();
+      });
     });
-    this.refs.mapForm.reset();
+
+  },
+
+  getInitialState() {
+    return {
+      fileFields: []
+    };
+  },
+
+  addFileField() {
+    console.log(this.state);
+    this.setState({
+      ...this.state,
+      fileFields: [...this.state.fileFields, 'hack']
+    });
+  },
+
+  fileField(val, key) {
+    return (
+        <label key={key}>
+          <input type="text" name="map[files][]"  />
+        </label>
+    );
   },
 
   render() {
@@ -34,14 +65,21 @@ export const Office = React.createClass({
           {theOffice.maps.map(this.renderMap)}
         </ul>
         <form ref="mapForm" onSubmit={this.handleSubmit} >
+          <input type="hidden" name="map[office_id]" value={officeId} />
           <label>
             Name:
-            <input ref="newMapName" type="text" name="name" />
+            <input ref="newMapName" type="text" name="map[name]" />
           </label>
           <label>
-            Map file:
-            <input type="file" name="name" />
+            Floor:
+            <input ref="newMapName" type="number" name="map[floor]" />
           </label>
+          <label>
+            <button  onClick={this.addFileField} type="button" className="button" >
+              Add File
+            </button>
+          </label>
+          {this.state.fileFields.map(this.fileField)}
           <button type="submit" className="button button--primary" >
             Save
           </button>
