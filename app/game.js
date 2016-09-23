@@ -1,15 +1,20 @@
 import React from 'react';
 
-import { GameMap } from './game-map.js';
+import { GameMapFactory } from './game-map.js';
 import { Sidebar } from './sidebar.js';
 
-export const Game = React.createClass({
-  render() {
-    return (
-        <div className="wrapper wrapper--fs game">
+export const GameFactory = (store) => {
+  const GameMap = GameMapFactory(store);
+  const Game = React.createClass({
+    render() {
+      return (
+          <div className="wrapper wrapper--fs game">
           <Sidebar/>
           <GameMap/>
-        </div>
-      )
-  }
-});
+          </div>
+      );
+    }
+  });
+
+  return Game;
+};

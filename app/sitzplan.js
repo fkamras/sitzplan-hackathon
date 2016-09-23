@@ -17,7 +17,6 @@ import { Departments } from './departments.js';
 import { SignUp } from './sign-up.js';
 import { Avatars } from './avatars.js';
 
-import { Game } from './game.js';
 import { LogIn } from './login.js';
 
 const NoMatch = React.createClass({
@@ -35,6 +34,9 @@ const NoMatch = React.createClass({
 
 import { Provider } from 'react-redux';
 import store, { history } from './store.js';
+
+import { GameFactory } from './game.js';
+const Game = GameFactory(store);
 
 render((
   <Provider store={store}>
