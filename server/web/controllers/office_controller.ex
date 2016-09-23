@@ -16,7 +16,7 @@ defmodule Sitzplan.OfficeController do
         conn
         |> put_status(:created)
         |> put_resp_header("location", office_path(conn, :show, office))
-        |> render("show.json", office: office)
+        |> render("show.json", office: office |> Repo.preload([:maps]))
       {:error, changeset} ->
         conn
         |> put_status(:unprocessable_entity)
@@ -30,7 +30,7 @@ defmodule Sitzplan.OfficeController do
   end
 
   def update(conn, %{"id" => id, "office" => office_params}) do
-    office = Repo.get!(Office, id)
+    office = Repo.get!(Office, id) |> Repo.preload([:maps])
     changeset = Office.changeset(office, office_params)
 
     case Repo.update(changeset) do
