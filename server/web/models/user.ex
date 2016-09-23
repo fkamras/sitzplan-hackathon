@@ -10,6 +10,7 @@ defmodule Sitzplan.User do
     field :email, :string
     field :social, :map
     field :quote, :string
+    belongs_to :map, Sitzplan.Map
 
     timestamps()
   end
@@ -19,7 +20,8 @@ defmodule Sitzplan.User do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:name, :work_title, :mapx, :mapy, :phone, :email, :social, :quote])
+    |> cast(params, [:name, :work_title, :mapx, :mapy, :phone, :email, :social, :quote, :map_id])
     |> validate_required([:name])
+    |> foreign_key_constraint(:map_id)
   end
 end
