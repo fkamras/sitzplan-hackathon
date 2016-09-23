@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha --compilers js:babel-register --recursive",
+    "test:watch": "npm test -- --watch",
     "start": "node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --port='1988' --host=0.0.0.0"
   },
   "author": "",
@@ -15,9 +16,12 @@
     "babel-plugin-transform-object-rest-spread": "^6.8.0",
     "babel-preset-es2015": "^6.13.2",
     "babel-preset-react": "^6.11.1",
+    "babel-register": "^6.14.0",
     "css-loader": "^0.25.0",
+    "expect": "^1.20.2",
     "file-loader": "^0.9.0",
     "img-loader": "^1.3.1",
+    "mocha": "^3.0.2",
     "node-sass": "^3.10.0",
     "raw-loader": "^0.5.1",
     "sass-loader": "^4.0.2",
