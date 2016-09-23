@@ -6,6 +6,7 @@ defmodule Sitzplan.Map do
     field :file, :string
     field :floor, :integer
     belongs_to :office, Sitzplan.Office
+    has_many :users, Sitzplan.User
 
     timestamps()
   end

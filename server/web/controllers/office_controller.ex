@@ -4,7 +4,7 @@ defmodule Sitzplan.OfficeController do
   alias Sitzplan.Office
 
   def index(conn, _params) do
-    offices = Repo.all(Office) |> Repo.preload([:maps])
+    offices = Repo.all(Office) |> Repo.preload([:maps, maps: :users])
     render(conn, "index.json", offices: offices)
   end
 
@@ -16,7 +16,7 @@ defmodule Sitzplan.OfficeController do
         conn
         |> put_status(:created)
         |> put_resp_header("location", office_path(conn, :show, office))
-        |> render("show.json", office: office |> Repo.preload([:maps]))
+        |> render("show.json", office: office |> Repo.preload([:maps, maps: :users]))
       {:error, changeset} ->
         conn
         |> put_status(:unprocessable_entity)
@@ -25,12 +25,12 @@ defmodule Sitzplan.OfficeController do
   end
 
   def show(conn, %{"id" => id}) do
-    office = Repo.get!(Office, id) |> Repo.preload([:maps])
+    office = Repo.get!(Office, id) |> Repo.preload([:maps, maps: :users])
     render(conn, "show.json", office: office)
   end
 
   def update(conn, %{"id" => id, "office" => office_params}) do
-    office = Repo.get!(Office, id) |> Repo.preload([:maps])
+    office = Repo.get!(Office, id) |> Repo.preload([:maps, maps: :users])
     changeset = Office.changeset(office, office_params)
 
     case Repo.update(changeset) do
