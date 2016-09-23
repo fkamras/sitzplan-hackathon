@@ -4,7 +4,7 @@ defmodule Sitzplan.MapController do
   alias Sitzplan.Map
 
   def index(conn, _params) do
-    maps = Repo.all(Map)
+    maps = Repo.all(Map) |> Repo.preload([:users])
     render(conn, "index.json", maps: maps)
   end
 
@@ -16,7 +16,7 @@ defmodule Sitzplan.MapController do
         conn
         |> put_status(:created)
         |> put_resp_header("location", map_path(conn, :show, map))
-        |> render("show.json", map: map)
+        |> render("show.json", map: map |> Repo.preload([:users]))
       {:error, changeset} ->
         conn
         |> put_status(:unprocessable_entity)
@@ -25,12 +25,12 @@ defmodule Sitzplan.MapController do
   end
 
   def show(conn, %{"id" => id}) do
-    map = Repo.get!(Map, id)
+    map = Repo.get!(Map, id) |> Repo.preload([:users])
     render(conn, "show.json", map: map)
   end
 
   def update(conn, %{"id" => id, "map" => map_params}) do
-    map = Repo.get!(Map, id)
+    map = Repo.get!(Map, id) |> Repo.preload([:users])
     changeset = Map.changeset(map, map_params)
 
     case Repo.update(changeset) do
