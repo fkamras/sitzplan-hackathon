@@ -11,7 +11,7 @@ export const Office = React.createClass({
         <li className="removable" onClick={this.removeMap.bind(this, this.props.params.officeKey, key)} key={key} >
           {map.name}
         </li>
-      )
+    );
   },
 
   handleSubmit(e) {
