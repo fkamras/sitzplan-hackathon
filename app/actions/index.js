@@ -34,10 +34,9 @@ export function addOffice(office) {
   }
 }
 
-export function addMap(officeKey, map) {
+export function addMap(map) {
   return {
     type: 'ADD_MAP',
-    officeKey,
     map
   }
 }

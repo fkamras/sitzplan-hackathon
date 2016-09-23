@@ -20,14 +20,12 @@ describe('actions', () => {
     expect(actions.addOffice(office)).toEqual(expectedAction)
   });
   it('addMap', () => {
-    const officeKey = 1;
     const map = 'theMap';
     const expectedAction = {
       type: 'ADD_MAP',
-      officeKey,
       map
     };
-    expect(actions.addMap(officeKey, map)).toEqual(expectedAction);
+    expect(actions.addMap(map)).toEqual(expectedAction);
   });
   it('removeMap',() => {
     const officeKey = 1;

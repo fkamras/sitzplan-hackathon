@@ -36,25 +36,31 @@ describe('offices reducer', () => {
 
     const state = [{
       name: 'Berlin',
+      id: 69,
       maps: [{
-        name: 'Sales'
+        name: 'Sales',
+        office_id: 69
       }]
     }];
 
     const newMap = {
-      name: 'Administration'
+      name: 'Administration',
+      office_id: 69
     };
 
     it('adds a map to the office', () => {
 
       expect(
-        reducer(state, { officeKey: 0, map: newMap, type: 'ADD_MAP' })
+        reducer(state, { map: newMap, type: 'ADD_MAP' })
         ).toEqual([{
           name: 'Berlin',
+          id: 69,
           maps: [{
-            name: 'Sales'
+            name: 'Sales',
+            office_id: 69
           }, {
-            name: 'Administration'
+            name: 'Administration',
+            office_id: 69
           }]
         }]);
 

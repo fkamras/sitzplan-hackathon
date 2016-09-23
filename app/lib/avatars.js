@@ -28,7 +28,7 @@ const buildAvatarSprites = (avatars, tilesize) => {
       if(sinceLastAnim > animEvery) {
         sinceLastAnim -= animEvery;
         animationCycle.current = (animationCycle.current + 1) % 4;
-        avatarTexture.frame = animationCycle.animations[animationCycle.current];
+        // avatarTexture.frame = animationCycle.animations[animationCycle.current];
       }
     };
 
@@ -44,7 +44,7 @@ const buildAvatarSprites = (avatars, tilesize) => {
 const populateStage = ({stage, avatars, tilesize = 32}) => {
 
   const avatarSprites = buildAvatarSprites(avatars, tilesize);
-  
+
   each(avatarSprites, (avatar) => {
     stage.addChild(avatar);
   });
