@@ -45,7 +45,7 @@ render((
         <IndexRoute component={Home}/>
         <Route path="settings" component={Settings}/>
         <Route path="offices" component={Offices}/>
-        <Route path="offices/:officeKey" component={Office} />
+        <Route path="offices/:officeId" component={Office} />
         <Route path="departments" component={Departments}/>
         <Route path="signup" component={SignUp}/>
         <Route path="avatars" component={Avatars}/>

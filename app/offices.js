@@ -6,20 +6,24 @@ import OfficeService from './services/office.js';
 export const Offices = React.createClass({
 
   handleSubmit(e) {
+
     e.preventDefault();
     var data = new FormData(this.refs.officeForm);
+
+
+
     OfficeService.create(data).then((res) => {
-      console.log(res);
-      this.refs.officeForm.reset();
+      res.json().then((body) => {
+        this.props.addOffice(body.data);
+        this.refs.officeForm.reset();
+      })
     });
-    //this.props.addOffice({
-      //name: this.refs.officeName.value
-    //});
+
   },
 
   renderOffice(office, i) {
     return (
-        <li key={i} ><Link to={`/offices/${i}`}>{office.name}</Link></li>
+        <li key={i} ><Link to={`/offices/${office.id}`}>{office.name}</Link></li>
       );
   },
 
@@ -32,6 +36,7 @@ export const Offices = React.createClass({
         <ul>
           {this.props.offices.map(this.renderOffice)}
         </ul>
+        <h4>Add new office</h4>
         <form ref="officeForm" onSubmit={this.handleSubmit} >
           <label>
             Name
