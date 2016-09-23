@@ -15,6 +15,8 @@ import { Office } from './office.js';
 import { Departments } from './departments.js';
 
 import { SignUp } from './sign-up.js';
+import { Avatars } from './avatars.js';
+
 import { Game } from './game.js';
 import { LogIn } from './login.js';
 
@@ -44,6 +46,7 @@ render((
         <Route path="offices/:officeKey" component={Office} />
         <Route path="departments" component={Departments}/>
         <Route path="signup" component={SignUp}/>
+        <Route path="avatars" component={Avatars}/>
         <Route path="login" component={LogIn} />
         <Route path="map" component={Game} />
         <Route path="*" component={NoMatch}/>

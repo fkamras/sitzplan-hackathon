@@ -5,6 +5,12 @@ const User = {
       method: 'POST',
       body: data
     });
+  },
+
+  getAvatarList() {
+    return fetch('/api/avatars', {
+      method: 'GET'
+    });
   }
 
 };
