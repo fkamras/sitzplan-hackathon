@@ -12,7 +12,6 @@ defmodule Sitzplan.Router do
   scope "/api", Sitzplan do
     pipe_through :api
 
-    resources "/departments", DepartmentController
     resources "/users", UserController
     resources "/offices", OfficeController
     resources "/maps", MapController
