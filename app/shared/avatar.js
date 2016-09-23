@@ -4,7 +4,7 @@ export const Avatar = React.createClass({
 
   render() {
 
-    const avatarUrl = require(`../assets/avatars/${this.props.character}.png`);
+    const avatarUrl = this.props.url;
 
     var setCharacter = {
       backgroundImage: `url(${avatarUrl})`
