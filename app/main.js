@@ -13,7 +13,7 @@ export const Main = React.createClass({
           this.props.addOffice(body.data[i]);
         }
         this.setState({
-          content: React.cloneElement({...this.props}.children, {...this.props})
+          loading: ''
         })
       });
     })
@@ -22,23 +22,25 @@ export const Main = React.createClass({
 
   renderLoading() {
     return (
+        <div className="app-loading">
         <div className="hero">
           <h1 className="hero__title"> Loading </h1>
+        </div>
         </div>
       )
   },
 
   getInitialState() {
     return {
-      content: this.renderLoading()
+      loading: this.renderLoading()
     };
   },
 
   render() {
     return (
       <div className="app">
-        {this.state.content}
-
+        {React.cloneElement({...this.props}.children, {...this.props})}
+        {this.state.loading}
       </div>
       )
   }
